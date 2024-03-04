@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Inventory Statistics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" type="text/css" href="Bar.css">
+</head>
+<body>
+    <h1>Weekly Inventory Statistics</h1>
+    <div class="container">
+        <div class="chart-box">
+            
+            <canvas id="inventoryChart" width="800" height="400"></canvas>
+          
+            <button class="zoom-out" onclick="zoomOut()">Zoom Out</button>
+        </div>
+    </div>
+
+    <div class="calendar">
+        <div onclick="updateChart(1)">Week 1</div>
+        <div onclick="updateChart(2)">Week 2</div>
+        <div onclick="updateChart(3)">Week 3</div>
+        <div onclick="updateChart(4)">Week 4</div>
+    </div>
+
+    <script>
+       
+        var originalData = [50, 70, 60, 80]; 
+        var originalLabels = ['Week 1', 'Week 2', 'Week 3', 'Week 4']; 
+
+
+        var ctx = document.getElementById('inventoryChart').getContext('2d');
+
+
+        var inventoryChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: originalLabels,
+                datasets: [{
+                    label: 'Quantity',
+                    data: originalData,
+                    backgroundColor: 'blue',
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Week'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Quantity'
+                        }
+                    }
+                }
+            }
+        });
+
+
+        function updateChart(week) {
+
+            var data = [50, 70, 60, 80]; 
+            var labels = ['Week 1', 'Week 2', 'Week 3', 'Week 4']; 
+
+
+            var selectedData = [data[week - 1]];
+            var selectedLabels = [labels[week - 1]];
+
+
+            inventoryChart.data.datasets[0].data = selectedData;
+            inventoryChart.data.labels = selectedLabels;
+            inventoryChart.update();
+        }
+
+
+        function zoomOut() {
+
+            inventoryChart.data.datasets[0].data = originalData;
+            inventoryChart.data.labels = originalLabels;
+            inventoryChart.update();
+        }
+    </script>
+</body>
+</html>

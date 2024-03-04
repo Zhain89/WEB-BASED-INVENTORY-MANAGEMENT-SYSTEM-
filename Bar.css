@@ -1,0 +1,45 @@
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+}
+h1 {
+    color: #333;
+}
+.container {
+    display: flex;
+    justify-content: center;
+}
+.chart-box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.calendar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.calendar div {
+    margin: 0 10px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+.calendar div:hover {
+    background-color: #ddd;
+}
+.zoom-out {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.zoom-out:hover {
+    background-color: #2980b9;
+}
